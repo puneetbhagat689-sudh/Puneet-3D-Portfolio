@@ -19,6 +19,263 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,9,13,.72);
 
 .company-head{display:flex;align-items:center;gap:16px;margin-top:8px}.company-logo{width:62px;height:62px;object-fit:contain;border-radius:14px;background:rgba(255,255,255,.92);padding:7px;border:1px solid rgba(255,255,255,.1)}.project-image{margin-top:22px;border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden;background:#fff}.project-image img{display:block;width:100%;height:auto}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.gallery img{width:100%;height:220px;object-fit:contain;background:#fff;border-radius:15px;border:1px solid rgba(255,255,255,.1)}body.light .gallery img{border-color:rgba(15,23,42,.08)}@media(max-width:850px){.gallery{grid-template-columns:1fr 1fr}}@media(max-width:520px){.gallery{grid-template-columns:1fr}.gallery img{height:auto}}
 @media(max-width:950px){.hero{grid-template-columns:1fr}.hero-3d{height:620px;margin-top:-10px}.hero>div:first-child{text-align:center}.hero>div:first-child .chips,.hero>div:first-child .buttons{justify-content:center}}@media(max-width:600px){.hero-3d{height:500px}.scene{transform:scale(.74)}.finance-card{min-width:88px;padding:9px 11px}.finance-card b{font-size:16px}.scene-label.analysis{display:none}}@media(prefers-reduced-motion:reduce){.ring,.finance-card,.glow{animation:none!important}.hero-3d{transition:none!important}}
+
+/* =========================
+   FULL PORTFOLIO 3D SYSTEM
+   ========================= */
+:root{
+  --p3d-blue:#3b82f6;
+  --p3d-cyan:#22d3ee;
+  --p3d-purple:#6366f1;
+  --p3d-glass:rgba(8,17,33,.72);
+  --p3d-line:rgba(96,165,250,.20);
+}
+body{
+  background:
+    radial-gradient(circle at 75% 10%,rgba(37,99,235,.09),transparent 28%),
+    radial-gradient(circle at 10% 55%,rgba(34,211,238,.035),transparent 25%),
+    #07090d;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.32;
+  background-image:
+    linear-gradient(rgba(96,165,250,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(96,165,250,.028) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,black,transparent 92%);
+}
+.section{
+  position:relative;
+  transform-style:preserve-3d;
+}
+.section:before{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.08),transparent 70%);
+  filter:blur(20px);
+  pointer-events:none;
+  z-index:-1;
+}
+.section:nth-of-type(odd):before{right:-130px;top:10%}
+.section:nth-of-type(even):before{left:-130px;bottom:5%}
+
+.p3d-stage{
+  perspective:1400px;
+  transform-style:preserve-3d;
+}
+.p3d-card{
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .18s ease,box-shadow .25s ease,border-color .25s ease;
+  will-change:transform;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(10,20,38,.82),rgba(5,10,20,.72));
+  border:1px solid rgba(96,165,250,.16);
+  box-shadow:0 22px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);
+}
+.p3d-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.075),transparent 25%,transparent 68%,rgba(59,130,246,.05));
+  opacity:.8;
+}
+.p3d-card:after{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  left:var(--mx,50%);
+  top:var(--my,20%);
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(59,130,246,.13),transparent 68%);
+  filter:blur(12px);
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.p3d-card:hover{
+  border-color:rgba(96,165,250,.38);
+  box-shadow:0 35px 90px rgba(0,0,0,.42),0 0 35px rgba(37,99,235,.09);
+}
+.p3d-card:hover:after{opacity:1}
+
+.profile-grid,.edu-grid,.exp-grid,.project-grid,.skill-grid,.cert-grid{
+  perspective:1300px;
+  transform-style:preserve-3d;
+}
+
+.profile-grid .stats{
+  transform-style:preserve-3d;
+}
+.profile-grid .stat{
+  position:relative;
+  transform:translateZ(12px);
+  transition:transform .3s ease;
+}
+.profile-grid .stat:hover{transform:translateZ(35px) scale(1.04)}
+
+.edu-grid .card,.exp-grid .card,.project-grid .card,.cert-grid .card{
+  transform:translateZ(0);
+}
+.edu-grid .card:hover,.exp-grid .card:hover,.project-grid .card:hover,.cert-grid .card:hover{
+  transform:translateZ(20px) rotateX(1deg) rotateY(-1deg);
+}
+
+.edu-grid .card:before{
+  background:linear-gradient(120deg,rgba(59,130,246,.08),transparent 35%,rgba(34,211,238,.045));
+}
+.exp-grid .card:before{
+  background:linear-gradient(120deg,rgba(34,211,238,.07),transparent 40%,rgba(59,130,246,.06));
+}
+.project-grid .card:before{
+  background:linear-gradient(120deg,rgba(99,102,241,.11),transparent 38%,rgba(34,211,238,.06));
+}
+.cert-grid .cert:before{
+  background:linear-gradient(120deg,rgba(59,130,246,.07),transparent 40%,rgba(34,211,238,.05));
+}
+
+.edu-grid .card .date,
+.exp-grid .card .date,
+.project-grid .card .date,
+.cert-grid .card .date{
+  text-shadow:0 0 18px rgba(96,165,250,.13);
+}
+
+.metrics .metric,.metrics .metric strong{
+  position:relative;
+  transform:translateZ(18px);
+}
+
+.project-image{
+  position:relative;
+  transform:translateZ(24px);
+  border:1px solid rgba(96,165,250,.18);
+  box-shadow:0 20px 45px rgba(0,0,0,.28);
+  overflow:hidden;
+}
+.project-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(96,165,250,.10),transparent 35%,rgba(34,211,238,.06));
+  pointer-events:none;
+}
+
+.skill{
+  position:relative;
+  transform-style:preserve-3d;
+  transform:translateZ(0);
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+  background:linear-gradient(145deg,rgba(11,22,40,.72),rgba(5,10,19,.62));
+  border:1px solid rgba(96,165,250,.13);
+  box-shadow:0 15px 35px rgba(0,0,0,.18);
+}
+.skill:hover{
+  transform:translateZ(24px) translateY(-4px) rotateX(2deg);
+  border-color:rgba(96,165,250,.38);
+  box-shadow:0 24px 50px rgba(0,0,0,.35),0 0 25px rgba(37,99,235,.08);
+  color:#fff;
+}
+.skill:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(120deg,rgba(59,130,246,.08),transparent 42%);
+  pointer-events:none;
+}
+
+.contact{
+  position:relative;
+  transform-style:preserve-3d;
+}
+.contact > div{
+  transform:translateZ(28px);
+}
+.contact > img{
+  transform:translateZ(70px) rotateY(-7deg);
+  transition:transform .25s ease,box-shadow .25s ease;
+  box-shadow:0 35px 80px rgba(0,0,0,.45);
+  border:1px solid rgba(96,165,250,.22);
+}
+.contact:hover > img{
+  transform:translateZ(95px) rotateY(-3deg) rotateX(2deg);
+  box-shadow:0 45px 100px rgba(0,0,0,.55),0 0 35px rgba(37,99,235,.12);
+}
+
+.btn{
+  transform-style:preserve-3d;
+}
+.btn:hover{
+  transform:translateY(-3px) translateZ(10px);
+}
+
+.eyebrow{
+  text-shadow:0 0 22px rgba(59,130,246,.14);
+}
+
+.title{
+  text-shadow:0 12px 40px rgba(0,0,0,.3);
+}
+
+.p3d-reveal{
+  opacity:0;
+  transform:translateY(45px) translateZ(-30px);
+  transition:opacity .75s ease,transform .85s cubic-bezier(.2,.7,.2,1);
+}
+.p3d-reveal.visible{
+  opacity:1;
+  transform:translateY(0) translateZ(0);
+}
+
+.p3d-divider{
+  width:100%;
+  height:1px;
+  margin:10px 0 0;
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.45),rgba(34,211,238,.22),transparent);
+  box-shadow:0 0 20px rgba(37,99,235,.14);
+}
+
+.p3d-floating-orb{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#60a5fa;
+  box-shadow:0 0 18px #60a5fa;
+  pointer-events:none;
+  animation:p3dFloat 6s ease-in-out infinite;
+}
+.p3d-floating-orb.o1{right:7%;top:18%}
+.p3d-floating-orb.o2{left:4%;top:58%;animation-delay:2s;background:#22d3ee;box-shadow:0 0 18px #22d3ee}
+.p3d-floating-orb.o3{right:15%;bottom:12%;animation-delay:4s;width:5px;height:5px}
+
+@keyframes p3dFloat{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(0,-18px,20px)}
+}
+
+@media(max-width:850px){
+  .p3d-card:hover{transform:none}
+  .skill:hover{transform:translateY(-3px)}
+  .contact > img{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .p3d-reveal{opacity:1;transform:none;transition:none}
+  .p3d-floating-orb,.finance-card,.ring{animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -60,21 +317,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,9,13,.72);
 </section>
 
 <section id="about" class="section"><div class="container profile-grid">
-<div><div class="eyebrow">01 — Profile</div><h2 class="title">A finance career, built with <span class="grad">discipline.</span></h2><div class="stats"><div class="stat"><b>9.07</b><small>MBA CGPA</small></div><div class="stat"><b>3</b><small>Listed Cos. Analyzed</small></div><div class="stat"><b>50+</b><small>Firms' Accounts Prepared</small></div></div></div>
+<div><div class="eyebrow">01 — Profile</div><h2 class="title">A finance career, built with <span class="grad">discipline.</span></h2><div class="stats p3d-card p3d-reveal"><div class="stat"><b>9.07</b><small>MBA CGPA</small></div><div class="stat"><b>3</b><small>Listed Cos. Analyzed</small></div><div class="stat"><b>50+</b><small>Firms' Accounts Prepared</small></div></div></div>
 <div class="profile-copy muted"><p>A self-motivated finance professional in training — grounded in banking, financial consultancy and accounting, with the analytical discipline to sit inside a balance sheet and the composure to work under audit-season pressure.</p><p><b>Analytical Thinking.</b> Comfortable moving between five-year financial statements, ratio analysis and DuPont decomposition to explain why a number moved, not just that it did.</p><p><b>Precision & Compliance.</b> Trained in a Chartered Accountancy environment — GST filing, statutory compliance, and Tally Prime bookkeeping under real deadlines.</p><p><b>Composure Under Pressure.</b> Built through client-facing accounting work and audit participation, where accuracy and timelines both matter.</p><p><b>Discipline & Continuous Learning.</b> Guided by honesty, teamwork and a habit of adding a new certification or model to the portfolio every few months.</p></div>
 </div></section>
 
 <section id="education" class="section"><div class="container"><div class="eyebrow">02 — Education</div><h2 class="title">Academic foundation for a <span class="grad">finance career.</span></h2>
-<div class="edu-grid">
-<div class="card"><div class="date">Aug 2025 — Present</div><h3>Master of Business Administration (MBA)</h3><h4>Lovely Professional University, Phagwara, Punjab</h4><p>Specialization in Banking and Financial Services, with coursework and project work concentrated in financial consultancy, investment analysis and risk management.</p><div class="meta"><span class="tag">Pursuing</span><span class="tag">CGPA 9.07</span><span class="tag">Banking & Financial Services</span></div></div>
-<div class="card"><div class="date">Aug 2022 — Jun 2025</div><h3>Bachelor of Commerce (B.Com)</h3><h4>Lovely Professional University, Phagwara, Punjab</h4><p>Built the foundation in accounting, finance and business management through coursework and practical projects that underpin the MBA specialization today.</p><div class="meta"><span class="tag">Completed</span><span class="tag">CGPA 8.82</span></div></div>
-<div class="card"><div class="date">Jul 2021 — Apr 2022</div><h3>Senior Secondary Education — Commerce</h3><h4>Government Senior Secondary School, Pathankot, Punjab</h4><p>Intermediate in Commerce with emphasis on economics, business studies and accountancy.</p><div class="meta"><span class="tag">Result 86%</span><span class="tag">Commerce Stream</span></div></div>
+<div class="edu-grid p3d-stage">
+<div class="card p3d-card p3d-reveal"><div class="date">Aug 2025 — Present</div><h3>Master of Business Administration (MBA)</h3><h4>Lovely Professional University, Phagwara, Punjab</h4><p>Specialization in Banking and Financial Services, with coursework and project work concentrated in financial consultancy, investment analysis and risk management.</p><div class="meta"><span class="tag">Pursuing</span><span class="tag">CGPA 9.07</span><span class="tag">Banking & Financial Services</span></div></div>
+<div class="card p3d-card p3d-reveal"><div class="date">Aug 2022 — Jun 2025</div><h3>Bachelor of Commerce (B.Com)</h3><h4>Lovely Professional University, Phagwara, Punjab</h4><p>Built the foundation in accounting, finance and business management through coursework and practical projects that underpin the MBA specialization today.</p><div class="meta"><span class="tag">Completed</span><span class="tag">CGPA 8.82</span></div></div>
+<div class="card p3d-card p3d-reveal"><div class="date">Jul 2021 — Apr 2022</div><h3>Senior Secondary Education — Commerce</h3><h4>Government Senior Secondary School, Pathankot, Punjab</h4><p>Intermediate in Commerce with emphasis on economics, business studies and accountancy.</p><div class="meta"><span class="tag">Result 86%</span><span class="tag">Commerce Stream</span></div></div>
 </div></div></section>
 
 <section id="experience" class="section"><div class="container"><div class="eyebrow">03 — Experience</div><h2 class="title">Two internships. Two <span class="grad">sides of finance.</span></h2><p class="muted" style="max-width:800px;margin-top:18px;font-size:18px">One inside a Chartered Accountancy practice, filing GST returns and reconciling accounts. One inside a finance team, modelling listed companies and building investment reports.</p>
-<div class="exp-grid">
-<div class="card"><div class="date">Jun 2026 — Present · Noida</div><div class="company-head"><img class="company-logo" src="logos/Arizon-Network-logo.png" alt="Arizon Network logo"><div><h3>Arizon Network</h3><h4>Finance Intern</h4></div></div><div class="metrics"><div class="metric"><b>5-Year</b>Financial analysis window</div><div class="metric"><b>3</b>Listed companies</div><div class="metric"><b>20+</b>Prospective clients researched</div></div><p style="margin-top:20px">As Finance Intern at Arizon Network, the work centered on evaluating three listed companies in the Media & Publishing industry — reading their financial history, testing it against ratio-based diagnostics, and translating the findings into material a business team could act on.</p><ul><li>Conducted market research and customer analysis to support subscription-growth initiatives and business strategy, across 20+ prospective clients.</li><li>Performed 5-year financial statement analysis of three listed companies in the Media & Publishing industry.</li><li>Conducted Ratio Analysis, a 5-Step DuPont Analysis, CAPM, WACC and Financial Red Flag Analysis.</li><li>Built Excel-based financial models, dashboards and a Financial Diagnostic Report.</li></ul><div class="meta"><span class="tag">Excel</span><span class="tag">Financial Modelling</span><span class="tag">DuPont</span><span class="tag">CAPM</span><span class="tag">WACC</span><span class="tag">Dashboarding</span></div><div class="buttons"><a class="btn" href="certificates/Arizon-Network-Internship-Certificate.pdf" target="_blank">View Internship Certificate ↗</a></div></div>
-<div class="card"><div class="date">Jun 2024 — Jul 2024 · Pathankot, Punjab</div><div class="company-head"><img class="company-logo" src="logos/Parks-and-Co-logo.png" alt="Parks & Co. logo"><div><h3>Parks & Co., Chartered Accountants</h3><h4>Accounting Intern</h4></div></div><div class="metrics"><div class="metric"><b>50+</b>Firms' statements prepared</div><div class="metric"><b>100+</b>Client queries resolved</div><div class="metric"><b>GST</b>Return filing & compliance</div></div><p style="margin-top:20px">A two-month accounting internship inside a working Chartered Accountancy practice — real client files, real filing deadlines, and direct exposure to the audit process.</p><ul><li>Prepared, analyzed and forecasted financial statements for 50+ firms, including account reconciliation and tax-related adjustments.</li><li>Prepared financial accounts and filed GST returns using Tally Prime.</li><li>Managed communication and query resolution for 100+ clients through calls and coordination.</li><li>Ensured compliance with statutory regulations and taxation norms; supported client onboarding through the Income Tax e-filing portal.</li><li>Supported audit preparation, including exposure to non-profit and other organizational audits.</li></ul><div class="meta"><span class="tag">Tally Prime</span><span class="tag">GST</span><span class="tag">Income Tax e-Filing</span><span class="tag">Reconciliation</span><span class="tag">Audit</span></div><div class="buttons"><a class="btn" href="certificates/Parks-and-Co-Internship-Certificate.png" target="_blank">View Internship Certificate ↗</a></div></div>
+<div class="exp-grid p3d-stage">
+<div class="card p3d-card p3d-reveal"><div class="date">Jun 2026 — Present · Noida</div><div class="company-head"><img class="company-logo" src="logos/Arizon-Network-logo.png" alt="Arizon Network logo"><div><h3>Arizon Network</h3><h4>Finance Intern</h4></div></div><div class="metrics"><div class="metric"><b>5-Year</b>Financial analysis window</div><div class="metric"><b>3</b>Listed companies</div><div class="metric"><b>20+</b>Prospective clients researched</div></div><p style="margin-top:20px">As Finance Intern at Arizon Network, the work centered on evaluating three listed companies in the Media & Publishing industry — reading their financial history, testing it against ratio-based diagnostics, and translating the findings into material a business team could act on.</p><ul><li>Conducted market research and customer analysis to support subscription-growth initiatives and business strategy, across 20+ prospective clients.</li><li>Performed 5-year financial statement analysis of three listed companies in the Media & Publishing industry.</li><li>Conducted Ratio Analysis, a 5-Step DuPont Analysis, CAPM, WACC and Financial Red Flag Analysis.</li><li>Built Excel-based financial models, dashboards and a Financial Diagnostic Report.</li></ul><div class="meta"><span class="tag">Excel</span><span class="tag">Financial Modelling</span><span class="tag">DuPont</span><span class="tag">CAPM</span><span class="tag">WACC</span><span class="tag">Dashboarding</span></div><div class="buttons"><a class="btn" href="certificates/Arizon-Network-Internship-Certificate.pdf" target="_blank">View Internship Certificate ↗</a></div></div>
+<div class="card p3d-card p3d-reveal"><div class="date">Jun 2024 — Jul 2024 · Pathankot, Punjab</div><div class="company-head"><img class="company-logo" src="logos/Parks-and-Co-logo.png" alt="Parks & Co. logo"><div><h3>Parks & Co., Chartered Accountants</h3><h4>Accounting Intern</h4></div></div><div class="metrics"><div class="metric"><b>50+</b>Firms' statements prepared</div><div class="metric"><b>100+</b>Client queries resolved</div><div class="metric"><b>GST</b>Return filing & compliance</div></div><p style="margin-top:20px">A two-month accounting internship inside a working Chartered Accountancy practice — real client files, real filing deadlines, and direct exposure to the audit process.</p><ul><li>Prepared, analyzed and forecasted financial statements for 50+ firms, including account reconciliation and tax-related adjustments.</li><li>Prepared financial accounts and filed GST returns using Tally Prime.</li><li>Managed communication and query resolution for 100+ clients through calls and coordination.</li><li>Ensured compliance with statutory regulations and taxation norms; supported client onboarding through the Income Tax e-filing portal.</li><li>Supported audit preparation, including exposure to non-profit and other organizational audits.</li></ul><div class="meta"><span class="tag">Tally Prime</span><span class="tag">GST</span><span class="tag">Income Tax e-Filing</span><span class="tag">Reconciliation</span><span class="tag">Audit</span></div><div class="buttons"><a class="btn" href="certificates/Parks-and-Co-Internship-Certificate.png" target="_blank">View Internship Certificate ↗</a></div></div>
 </div></div></section>
 
 <section id="projects" class="section"><div class="container">
@@ -84,9 +341,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,9,13,.72);
 Selected outputs from the DCF valuation and LBO modelling projects are included below so the work can be explored beyond the written description.
 </p>
 
-<div class="project-grid">
+<div class="project-grid p3d-stage">
 
-<div class="card">
+<div class="card p3d-card p3d-reveal">
 <div class="date">Project 01 · Financial Valuation Model · Feb–Mar 2026</div>
 <h3>Discounted Cash Flow (DCF) Valuation</h3>
 <p>An integrated 3-statement financial model and five-year forecast using FCFF, WACC, CAPM, ratio analysis and sensitivity analysis.</p>
@@ -109,7 +366,7 @@ Selected outputs from the DCF valuation and LBO modelling projects are included 
 </div>
 </div>
 
-<div class="card">
+<div class="card p3d-card p3d-reveal">
 <div class="date">Project 02 · LBO Model · Feb–Mar 2026</div>
 <h3>Leveraged Buyout — Jubilant Ingrevia Ltd.</h3>
 <p>A complete LBO model covering operating forecasts, debt structuring, repayment schedules, sponsor returns and scenario analysis.</p>
@@ -134,7 +391,7 @@ Selected outputs from the DCF valuation and LBO modelling projects are included 
 
 </div>
 
-<div class="card" style="margin-top:18px">
+<div class="card p3d-card p3d-reveal" style="margin-top:18px">
 <div class="date">Project Evidence Gallery</div>
 <h3>Selected model outputs</h3>
 <div class="gallery">
@@ -146,7 +403,7 @@ Selected outputs from the DCF valuation and LBO modelling projects are included 
 
 </div></section>
 
-<section id="skills" class="section"><div class="container"><div class="eyebrow">05 — Core Skills</div><h2 class="title">The finance <span class="grad">skill matrix.</span></h2><p class="muted" style="max-width:800px;margin-top:18px;font-size:18px">Technical fluency built through internships and coursework, paired with the interpersonal habits that make a finance team function.</p><div class="skill-grid"><span class="skill">Financial Modelling & Valuation — Strong</span><span class="skill">Microsoft Excel — Advanced</span><span class="skill">AI-assisted Excel</span><span class="skill">Ratio & DuPont Analysis — Strong</span><span class="skill">Accounting & Tally Prime — Strong</span><span class="skill">GST Compliance & Auditing</span><span class="skill">PowerPoint, Word & Power BI</span><span class="skill">Data Analysis & Reporting</span><span class="skill">Leadership</span><span class="skill">Teamwork</span><span class="skill">Communication</span><span class="skill">Decision-Making</span><span class="skill">Problem-Solving</span><span class="skill">Adaptability</span><span class="skill">Time Management</span><span class="skill">Analytical Mindset</span><span class="skill">Creative Thinking</span></div></div></section>
+<section id="skills" class="section"><div class="container"><div class="eyebrow">05 — Core Skills</div><h2 class="title">The finance <span class="grad">skill matrix.</span></h2><p class="muted" style="max-width:800px;margin-top:18px;font-size:18px">Technical fluency built through internships and coursework, paired with the interpersonal habits that make a finance team function.</p><div class="skill-grid"><span class="skill p3d-reveal">Financial Modelling & Valuation — Strong</span><span class="skill p3d-reveal">Microsoft Excel — Advanced</span><span class="skill p3d-reveal">AI-assisted Excel</span><span class="skill p3d-reveal">Ratio & DuPont Analysis — Strong</span><span class="skill p3d-reveal">Accounting & Tally Prime — Strong</span><span class="skill p3d-reveal">GST Compliance & Auditing</span><span class="skill p3d-reveal">PowerPoint, Word & Power BI</span><span class="skill p3d-reveal">Data Analysis & Reporting</span><span class="skill p3d-reveal">Leadership</span><span class="skill p3d-reveal">Teamwork</span><span class="skill p3d-reveal">Communication</span><span class="skill p3d-reveal">Decision-Making</span><span class="skill p3d-reveal">Problem-Solving</span><span class="skill p3d-reveal">Adaptability</span><span class="skill p3d-reveal">Time Management</span><span class="skill p3d-reveal">Analytical Mindset</span><span class="skill p3d-reveal">Creative Thinking</span></div></div></section>
 
 <section id="credentials" class="section"><div class="container">
 <div class="eyebrow">06 — Achievements & Certifications</div>
@@ -154,9 +411,9 @@ Selected outputs from the DCF valuation and LBO modelling projects are included 
 <p class="muted" style="max-width:820px;margin-top:18px;font-size:18px">
 Explore the certificates and internship evidence provided for this portfolio. Each card opens the original uploaded document or image.
 </p>
-<div class="cert-grid">
+<div class="cert-grid p3d-stage">
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Mar 2026 · NISM</div>
 <h3>NISM Series V-A — Mutual Fund Distributors Certification</h3>
@@ -169,7 +426,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 </div>
 </div>
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Feb–Mar 2026 · LPU</div>
 <h3>Applied Financial Modelling Using Excel and AI</h3>
@@ -182,7 +439,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 </div>
 </div>
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Aug 2025 · BNY Mellon</div>
 <h3>BNY Spectrum — Participation Certificate</h3>
@@ -195,7 +452,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 </div>
 </div>
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Jun 2026 · Arizon Network</div>
 <h3>Finance Internship Evidence</h3>
@@ -208,7 +465,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 </div>
 </div>
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Jun–Jul 2024 · Parks & Co.</div>
 <h3>Accounting Internship Certificate</h3>
@@ -221,7 +478,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 </div>
 </div>
 
-<div class="card cert">
+<div class="card cert p3d-card p3d-reveal">
 <div>
 <div class="date">Community Development</div>
 <h3>Financial Literacy Campaign</h3>
@@ -236,7 +493,7 @@ Explore the certificates and internship evidence provided for this portfolio. Ea
 
 </div></div></section>
 
-<section id="contact" class="section"><div class="container"><div class="contact"><div><div class="eyebrow">07 — Connect</div><h2>Let's talk <span class="grad">finance.</span></h2><p>Open to Banking & Financial Services roles, internships and analyst opportunities.</p><div class="buttons"><a class="btn primary" href="cv/Puneet-Specialized-CV.pdf" target="_blank">View Specialized CV ↗</a><a class="btn" href="cv/Puneet-Specialized-CV.pdf" download>Download Specialized CV ↓</a><a class="btn" href="cv/Puneet-General-CV.pdf" target="_blank">View General CV ↗</a><a class="btn" href="cv/Puneet-General-CV.pdf" download>Download General CV ↓</a></div><p style="margin-top:25px">☎ <a href="tel:+917837452498">+91 78374 52498</a><br>✉ <a href="mailto:puneetbhagat689@gmail.com">puneetbhagat689@gmail.com</a><br>in <a href="https://www.linkedin.com/in/puneetbhagat" target="_blank">linkedin.com/in/puneetbhagat</a></p></div><img src="images/contact-portrait.png" alt="Puneet" ></div></div></section>
+<section id="contact" class="section"><div class="container"><div class="contact p3d-stage p3d-reveal"><div><div class="eyebrow">07 — Connect</div><h2>Let's talk <span class="grad">finance.</span></h2><p>Open to Banking & Financial Services roles, internships and analyst opportunities.</p><div class="buttons"><a class="btn primary" href="cv/Puneet-Specialized-CV.pdf" target="_blank">View Specialized CV ↗</a><a class="btn" href="cv/Puneet-Specialized-CV.pdf" download>Download Specialized CV ↓</a><a class="btn" href="cv/Puneet-General-CV.pdf" target="_blank">View General CV ↗</a><a class="btn" href="cv/Puneet-General-CV.pdf" download>Download General CV ↓</a></div><p style="margin-top:25px">☎ <a href="tel:+917837452498">+91 78374 52498</a><br>✉ <a href="mailto:puneetbhagat689@gmail.com">puneetbhagat689@gmail.com</a><br>in <a href="https://www.linkedin.com/in/puneetbhagat" target="_blank">linkedin.com/in/puneetbhagat</a></p></div><img src="images/contact-portrait.png" alt="Puneet" ></div></div></section>
 
 <footer><div class="container footer"><span>© <span id="year"></span> Puneet — Finance · Banking · Financial Services</span><span>GitHub + Vercel ready · Assets organized separately</span></div></footer>
 <button class="top" id="top">↑</button>
@@ -250,5 +507,81 @@ window.onscroll=()=>{topBtn.classList.toggle('show',scrollY>500)};
 topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 document.getElementById('year').textContent=new Date().getFullYear();const hero3d=document.getElementById('hero3d');if(hero3d&&window.matchMedia('(pointer:fine)').matches){hero3d.addEventListener('mousemove',e=>{const r=hero3d.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hero3d.style.transform=`rotateY(${x*10}deg) rotateX(${y*-7}deg)`});hero3d.addEventListener('mouseleave',()=>hero3d.style.transform='rotateY(0deg) rotateX(0deg)')}
 </script>
+
+<script>
+/* Full-site 3D interaction layer */
+(function(){
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(finePointer){
+    document.querySelectorAll('.p3d-card').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5;
+        const y=(e.clientY-r.top)/r.height-.5;
+        card.style.setProperty('--mx',(x+.5)*100+'%');
+        card.style.setProperty('--my',(y+.5)*100+'%');
+
+        const max=7;
+        card.style.transform=
+          `perspective(1000px) rotateX(${y*-max}deg) rotateY(${x*max}deg) translateZ(12px)`;
+      });
+      card.addEventListener('mouseleave',()=>{
+        card.style.transform='';
+      });
+    });
+
+    document.querySelectorAll('.skill').forEach(skill=>{
+      skill.addEventListener('mousemove',e=>{
+        const r=skill.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5;
+        const y=(e.clientY-r.top)/r.height-.5;
+        skill.style.transform=
+          `perspective(800px) rotateX(${y*-4}deg) rotateY(${x*5}deg) translateZ(18px) translateY(-3px)`;
+      });
+      skill.addEventListener('mouseleave',()=>skill.style.transform='');
+    });
+  }
+
+  const reveals=document.querySelectorAll('.p3d-reveal');
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach((el,i)=>{
+      el.style.transitionDelay=(Math.min(i%5,4)*70)+'ms';
+      observer.observe(el);
+    });
+  }else{
+    reveals.forEach(el=>el.classList.add('visible'));
+  }
+
+  // Adds subtle depth to major sections while scrolling.
+  const sections=[...document.querySelectorAll('.section')];
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(()=>{
+      const vh=window.innerHeight;
+      sections.forEach(sec=>{
+        const r=sec.getBoundingClientRect();
+        const center=r.top+r.height/2;
+        const distance=(center-vh/2)/vh;
+        if(Math.abs(distance)<1.2){
+          sec.style.setProperty('--section-depth',(distance*-5)+'px');
+        }
+      });
+      ticking=false;
+    });
+  },{passive:true});
+})();
+</script>
+
 </body>
 </html>
