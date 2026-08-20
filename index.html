@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Puneet — Finance, Financial Analysis, Financial Modeling and Business Analytics Portfolio">
+
+  <meta name="author" content="Puneet">
+
+  <title>Puneet | Finance & Business Analytics</title>
+
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background: #07090d;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+
+      transition:
+        background 0.4s ease,
+        color 0.4s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::selection {
+      background: rgba(59, 130, 246, 0.35);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 50px;
+    }
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #07090d;
+      --bg-secondary: #0d1118;
+      --card: rgba(255,255,255,0.045);
+      --card-hover: rgba(255,255,255,0.075);
+      --text: #ffffff;
+      --muted: #a5afbd;
+      --border: rgba(255,255,255,0.1);
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --gradient: linear-gradient(
+        135deg,
+        #3b82f6,
+        #6366f1,
+        #06b6d4
+      );
+    }
+
+    body.light {
+      --bg: #f6f7f9;
+      --bg-secondary: #ffffff;
+      --card: rgba(255,255,255,0.8);
+      --card-hover: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: rgba(15,23,42,0.1);
+    }
+
+    /* =========================================================
+       GENERAL
+    ========================================================= */
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: var(--primary-light);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -3px;
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-description {
+      max-width: 680px;
+      color: var(--muted);
+      margin-top: 22px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(7,9,13,0.72);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light nav {
+      background: rgba(255,255,255,0.78);
+    }
+
+    .nav-inner {
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+      border: 1px solid var(--border);
+
+      background: transparent;
+      color: var(--text);
+
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .icon-button:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .mobile-menu-button {
+      display: none;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    #home {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+
+      padding-top: 72px;
+    }
+
+    .hero-glow {
+      position: absolute;
+
+      width: 550px;
+      height: 550px;
+
+      left: 50%;
+      top: 0;
+
+      transform: translateX(-50%);
+
+      background: rgba(37,99,235,0.18);
+
+      filter: blur(130px);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+
+      align-items: center;
+
+      gap: 70px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 8px 14px;
+
+      border-radius: 100px;
+
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+
+      color: var(--primary-light);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      margin-bottom: 25px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      background: #22c55e;
+
+      border-radius: 50%;
+
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(1.4);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: 0.9;
+
+      letter-spacing: -7px;
+
+      font-weight: 900;
+    }
+
+    .hero-description {
+      max-width: 700px;
+
+      color: var(--muted);
+
+      font-size: 19px;
+      line-height: 1.8;
+
+      margin-top: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 14px 22px;
+
+      border-radius: 100px;
+
+      font-weight: 700;
+      font-size: 14px;
+
+      border: 1px solid var(--border);
+
+      transition:
+        transform 0.25s,
+        background 0.25s,
+        border-color 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+
+      box-shadow: 0 15px 40px rgba(37,99,235,0.25);
+    }
+
+    .button-primary:hover {
+      background: #2563eb;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .social {
+      width: 45px;
+      height: 45px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      transition: 0.25s;
+    }
+
+    .social:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      color: var(--primary-light);
+    }
+
+    /* HERO IMAGE */
+
+    .hero-image-wrapper {
+      position: relative;
+      max-width: 470px;
+      margin: auto;
+    }
+
+    .hero-image-wrapper::before {
+      content: "";
+
+      position: absolute;
+      inset: 30px;
+
+      border-radius: 45px;
+
+      background: rgba(59,130,246,0.22);
+
+      filter: blur(50px);
+
+      z-index: -1;
+    }
+
+    .hero-image-card {
+      padding: 10px;
+
+      border-radius: 42px;
+
+      background: rgba(255,255,255,0.04);
+
+      border: 1px solid var(--border);
+
+      backdrop-filter: blur(20px);
+
+      box-shadow: 0 30px 100px rgba(0,0,0,0.35);
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+
+      border-radius: 34px;
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .about-text p + p {
+      margin-top: 20px;
+    }
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+
+      margin-top: 55px;
+    }
+
+    .card {
+      padding: 30px;
+
+      border-radius: 28px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      transition:
+        transform 0.3s,
+        border-color 0.3s,
+        background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(59,130,246,0.55);
+      background: var(--card-hover);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      color: var(--primary-light);
+      background: rgba(59,130,246,0.1);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    .card-role {
+      color: var(--primary-light);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .card-period {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 45px;
+    }
+
+    .skill {
+      padding: 13px 18px;
+
+      border-radius: 15px;
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
+      color: var(--text);
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.25s;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      color: var(--primary-light);
+    }
+
+    /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 22px;
+
+      margin-top: 55px;
+    }
+
+    .project {
+      min-height: 330px;
+
+      padding: 30px;
+
+      border-radius: 30px;
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
+      display: flex;
+      flex-direction: column;
+
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      border-color: rgba(59,130,246,0.55);
+    }
+
+    .project-number {
+      color: var(--primary-light);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .project-category {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      margin-top: 45px;
+    }
+
+    .project h3 {
+      font-size: 26px;
+      margin-top: 8px;
+    }
+
+    .project p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-top: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      margin-top: auto;
+      padding-top: 25px;
+    }
+
+    .tag {
+      background: rgba(148,163,184,0.1);
+
+      padding: 6px 10px;
+
+      border-radius: 100px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       CERTIFICATIONS
+    ========================================================= */
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 15px;
+
+      margin-top: 50px;
+    }
+
+    .certificate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 20px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+    }
+
+    .certificate-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .certificate-icon {
+      width: 46px;
+      height: 46px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      color: var(--primary-light);
+      background: rgba(59,130,246,0.1);
+    }
+
+    .certificate h3 {
+      font-size: 15px;
+    }
+
+    .certificate-actions {
+      display: flex;
+      gap: 7px;
+    }
+
+    .certificate-actions a {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+
+      transition: 0.2s;
+    }
+
+    .certificate-actions a:hover {
+      color: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact-box {
+      display: grid;
+
+      grid-template-columns: 1.1fr 0.7fr;
+
+      align-items: center;
+
+      gap: 70px;
+
+      padding: 60px;
+
+      border-radius: 40px;
+
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(59,130,246,0.18),
+          transparent 40%
+        ),
+        var(--card);
+
+      border: 1px solid var(--border);
+    }
+
+    .contact-title {
+      font-size: clamp(42px, 5vw, 68px);
+
+      line-height: 1;
+
+      letter-spacing: -4px;
+
+      font-weight: 900;
+    }
+
+    .contact-text {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      margin-top: 22px;
+    }
+
+    .contact-image {
+      width: 100%;
+
+      aspect-ratio: 1;
+
+      object-fit: cover;
+
+      border-radius: 30px;
+
+      border: 1px solid var(--border);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 35px 0;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    .back-top {
+      position: fixed;
+
+      right: 25px;
+      bottom: 25px;
+
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--primary);
+
+      color: white;
+
+      border: none;
+
+      cursor: pointer;
+
+      box-shadow: 0 15px 40px rgba(37,99,235,0.3);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(20px);
+
+      transition: 0.3s;
+
+      z-index: 900;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        top: 72px;
+
+        padding: 20px;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+
+        background: var(--bg-secondary);
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 0;
+      }
+
+      .mobile-menu-button {
+        display: grid;
+      }
+
+      .hero-grid,
+      .two-column,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 55px;
+      }
+
+      .hero-image-wrapper {
+        max-width: 390px;
+      }
+
+      .cards,
+      .project-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero-title {
+        font-size: 62px;
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .card-top {
+        flex-direction: column;
+      }
+
+      .certificate {
+        align-items: flex-start;
+      }
+
+      .certificate-actions {
+        flex-direction: column;
+      }
+
+      .contact-box {
+        padding: 25px;
+        border-radius: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">
+        P<span>.</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-button"
+          id="themeButton"
+          aria-label="Toggle dark mode"
+        >
+          ☀
+        </button>
+
+        <button
+          class="icon-button mobile-menu-button"
+          id="menuButton"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <section id="home">
+
+    <div class="hero-glow"></div>
+
+    <div class="container hero-grid">
+
+      <div>
+
+        <div class="status">
+          <span class="status-dot"></span>
+          Finance & Business Analytics
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm
+          <br>
+
+          <span class="gradient-text">
+            Puneet.
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          MBA student specializing in Financial Consultancy and
+          Banking & Financial Services, with practical experience
+          in financial analysis, valuation, accounting, business
+          analytics and financial modeling.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="#projects"
+            class="button button-primary"
+          >
+            Explore My Work
+            <span>↗</span>
+          </a>
+
+          <a
+            href="cv/Puneet-Specialized-CV.pdf"
+            target="_blank"
+            class="button button-secondary"
+          >
+            ↓
+            Specialized CV
+          </a>
+
+        </div>
+
+        <div class="socials">
+
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            class="social"
+            aria-label="LinkedIn"
+          >
+            in
+          </a>
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            class="social"
+            aria-label="GitHub"
+          >
+            GH
+          </a>
+
+          <a
+            href="mailto:your-email@example.com"
+            class="social"
+            aria-label="Email"
+          >
+            @
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image-wrapper">
+
+        <div class="hero-image-card">
+
+          <img
+            src="images/hero-portrait.png"
+            alt="Puneet"
+            class="hero-image"
+            onerror="this.src='images/profile.jpg'"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       ABOUT
+  ======================================================== -->
+
+  <section id="about" class="section">
+
+    <div class="container two-column">
+
+      <div>
+
+        <div class="section-label">
+          About Me
+        </div>
+
+        <h2 class="section-title">
+          Finance with a
+          <br>
+          <span class="gradient-text">
+            data-driven mindset.
+          </span>
+        </h2>
+
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          I am pursuing an MBA at Lovely Professional University
+          with a focus on Financial Consultancy and Banking &
+          Financial Services.
+        </p>
+
+        <p>
+          My interests lie at the intersection of finance,
+          analytics and technology. I enjoy turning financial data
+          into insights that support better business decisions.
+        </p>
+
+        <p>
+          My practical exposure includes accounting, GST compliance,
+          financial analysis, financial modeling, valuation,
+          dashboards and business research.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       EXPERIENCE
+  ======================================================== -->
+
+  <section id="experience" class="section">
+
+    <div class="container">
+
+      <div class="section-label">
+        Experience
+      </div>
+
+      <h2 class="section-title">
+        Where I've
+        <span class="gradient-text">
+          learned.
+        </span>
+      </h2>
+
+      <div class="cards">
+
+        <article class="card">
+
+          <div class="card-top">
+
+            <div class="card-icon">
+              ₹
+            </div>
+
+            <span class="card-period">
+              2026
+            </span>
+
+          </div>
+
+          <h3>
+            Arizon Network
+          </h3>
+
+          <div class="card-role">
+            Finance Intern
+          </div>
+
+          <p>
+            Worked across financial diagnostics, company analysis,
+            ratio analysis, DuPont analysis and business analytics
+            dashboards.
+          </p>
+
+        </article>
+
+
+        <article class="card">
+
+          <div class="card-top">
+
+            <div class="card-icon">
+              A
+            </div>
+
+            <span class="card-period">
+              Summer Internship
+            </span>
+
+          </div>
+
+          <h3>
+            PARKS & CO.
+          </h3>
+
+          <div class="card-role">
+            Accounting & Tax Intern
+          </div>
+
+          <p>
+            Prepared accounts for 50+ firms, handled Tally Prime
+            entries, GST returns, audit work, income-tax e-filing
+            and client communication.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       SKILLS
+  ======================================================== -->
+
+  <section id="skills" class="section">
+
+    <div class="container">
+
+      <div class="section-label">
+        Capabilities
+      </div>
+
+      <h2 class="section-title">
+        Tools I
+        <span class="gradient-text">
+          work with.
+        </span>
+      </h2>
+
+      <div class="skills">
+
+        <span class="skill">
+          Financial Analysis
+        </span>
+
+        <span class="skill">
+          Financial Modeling
+        </span>
+
+        <span class="skill">
+          DCF Valuation
+        </span>
+
+        <span class="skill">
+          LBO Modeling
+        </span>
+
+        <span class="skill">
+          Microsoft Excel
+        </span>
+
+        <span class="skill">
+          Power Query
+        </span>
+
+        <span class="skill">
+          Power Pivot
+        </span>
+
+        <span class="skill">
+          Power BI
+        </span>
+
+        <span class="skill">
+          Tally Prime
+        </span>
+
+        <span class="skill">
+          Accounting
+        </span>
+
+        <span class="skill">
+          Investment Banking
+        </span>
+
+        <span class="skill">
+          Banking & Financial Services
+        </span>
+
+        <span class="skill">
+          Business Analytics
+        </span>
+
+        <span class="skill">
+          Data Visualization
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PROJECTS
+  ======================================================== -->
+
+  <section id="projects" class="section">
+
+    <div class="container">
+
+      <div class="section-label">
+        Selected Work
+      </div>
+
+      <h2 class="section-title">
+        Projects that
+        <span class="gradient-text">
+          show my thinking.
+        </span>
+      </h2>
+
+      <div class="project-grid">
+
+        <article class="project">
+
+          <div class="project-number">
+            01
+          </div>
+
+          <div class="project-category">
+            Finance • Valuation
+          </div>
+
+          <h3>
+            Financial Valuation Model
+          </h3>
+
+          <p>
+            Excel-based FCFF DCF valuation model for Jubilant
+            Ingrevia Ltd. including WACC, financial projections,
+            terminal value and sensitivity analysis.
+          </p>
+
+          <div class="tags">
+            <span class="tag">DCF</span>
+            <span class="tag">FCFF</span>
+            <span class="tag">WACC</span>
+            <span class="tag">Excel</span>
+          </div>
+
+        </article>
+
+
+        <article class="project">
+
+          <div class="project-number">
+            02
+          </div>
+
+          <div class="project-category">
+            Investment Banking
+          </div>
+
+          <h3>
+            LBO Financial Model
+          </h3>
+
+          <p>
+            Leveraged buyout model covering transaction assumptions,
+            sources & uses, debt schedule, operating projections
+            and investor returns.
+          </p>
+
+          <div class="tags">
+            <span class="tag">LBO</span>
+            <span class="tag">M&A</span>
+            <span class="tag">Debt</span>
+            <span class="tag">Excel</span>
+          </div>
+
+        </article>
+
+
+        <article class="project">
+
+          <div class="project-number">
+            03
+          </div>
+
+          <div class="project-category">
+            Financial Analysis
+          </div>
+
+          <h3>
+            Financial Statement Analysis
+          </h3>
+
+          <p>
+            Comparative analysis of media and publication companies
+            using five-year financial statements, ratio analysis,
+            five-step DuPont analysis and financial red-flag
+            diagnostics.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Ratio Analysis</span>
+            <span class="tag">DuPont</span>
+            <span class="tag">Research</span>
+          </div>
+
+        </article>
+
+
+        <article class="project">
+
+          <div class="project-number">
+            04
+          </div>
+
+          <div class="project-category">
+            Business Analytics
+          </div>
+
+          <h3>
+            Power BI Business Dashboard
+          </h3>
+
+          <p>
+            Interactive dashboard designed to analyze customers,
+            revenue, referral performance, locations and spending
+            patterns.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Analytics</span>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CERTIFICATIONS
+  ======================================================== -->
+
+  <section id="certifications" class="section">
+
+    <div class="container">
+
+      <div class="section-label">
+        Certifications
+      </div>
+
+      <h2 class="section-title">
+        Credentials that
+        <span class="gradient-text">
+          back my skills.
+        </span>
+      </h2>
+
+      <div class="cert-grid">
+
+
+        <div class="certificate">
+
+          <div class="certificate-left">
+
+            <div class="certificate-icon">
+              📜
+            </div>
+
+            <h3>
+              NISM Series V-A Mutual Fund Distributor
+            </h3>
+
+          </div>
+
+          <div class="certificate-actions">
+
+            <a
+              href="certificates/NISM-VA-Mutual-Fund-Distributor.pdf"
+              target="_blank"
+              title="View certificate"
+            >
+              ↗
+            </a>
+
+            <a
+              href="certificates/NISM-VA-Mutual-Fund-Distributor.pdf"
+              download
+              title="Download certificate"
+            >
+              ↓
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="certificate">
+
+          <div class="certificate-left">
+
+            <div class="certificate-icon">
+              📊
+            </div>
+
+            <h3>
+              Microsoft Excel with AI: From Beginner to Professional
+            </h3>
+
+          </div>
+
+          <div class="certificate-actions">
+
+            <a
+              href="certificates/Applied-Financial-Modelling-Excel-AI.pdf"
+              target="_blank"
+              title="View certificate"
+            >
+              ↗
+            </a>
+
+            <a
+              href="certificates/Applied-Financial-Modelling-Excel-AI.pdf"
+              download
+              title="Download certificate"
+            >
+              ↓
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="certificate">
+
+          <div class="certificate-left">
+
+            <div class="certificate-icon">
+              🏆
+            </div>
+
+            <h3>
+              BNY Spectrum Participation
+            </h3>
+
+          </div>
+
+          <div class="certificate-actions">
+
+            <a
+              href="certificates/BNY-Spectrum-Participation.png"
+              target="_blank"
+              title="View certificate"
+            >
+              ↗
+            </a>
+
+            <a
+              href="certificates/BNY-Spectrum-Participation.png"
+              download
+              title="Download certificate"
+            >
+              ↓
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="certificate">
+
+          <div class="certificate-left">
+
+            <div class="certificate-icon">
+              ⭐
+            </div>
+
+            <h3>
+              Financial Literacy Campaign
+            </h3>
+
+          </div>
+
+          <div class="certificate-actions">
+
+            <a
+              href="certificates/Financial-Literacy-Campaign.png"
+              target="_blank"
+              title="View certificate"
+            >
+              ↗
+            </a>
+
+            <a
+              href="certificates/Financial-Literacy-Campaign.png"
+              download
+              title="Download certificate"
+            >
+              ↓
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CONTACT
+  ======================================================== -->
+
+  <section id="contact" class="section">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div>
+
+          <div class="section-label">
+            Let's Connect
+          </div>
+
+          <h2 class="contact-title">
+            Have an
+            <br>
+            opportunity?
+            <br>
+
+            <span class="gradient-text">
+              Let's talk.
+            </span>
+          </h2>
+
+          <p class="contact-text">
+            I am open to opportunities in finance, consulting,
+            banking, financial analysis, business analytics and
+            investment-related roles.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a
+              href="cv/Puneet-Specialized-CV.pdf"
+              target="_blank"
+              class="button button-primary"
+            >
+              View Specialized CV
+              ↗
+            </a>
+
+            <a
+              href="cv/Puneet-Specialized-CV.pdf"
+              download
+              class="button button-secondary"
+            >
+              Download CV
+              ↓
+            </a>
+
+            <a
+              href="cv/Puneet-General-CV.pdf"
+              download
+              class="button button-secondary"
+            >
+              General CV
+              ↓
+            </a>
+
+          </div>
+
+          <a
+            href="mailto:your-email@example.com"
+            class="button button-secondary"
+            style="margin-top:20px;"
+          >
+            ✉ your-email@example.com
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <img
+            src="images/contact-portrait.png"
+            alt="Puneet"
+            class="contact-image"
+            onerror="this.src='images/profile.jpg'"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © <span id="year"></span> Puneet.
+        All rights reserved.
+      </div>
+
+      <div>
+        Finance • Analytics • Technology
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       BACK TO TOP
+  ======================================================== -->
+
+  <button
+    id="backTop"
+    class="back-top"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* Current year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Mobile menu */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", function () {
+
+      navLinks.classList.toggle("open");
+
+      if (navLinks.classList.contains("open")) {
+        menuButton.textContent = "×";
+      } else {
+        menuButton.textContent = "☰";
+      }
+
+    });
+
+
+    /* Close menu after navigation */
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          navLinks.classList.remove("open");
+
+          menuButton.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* Theme */
+
+    const themeButton =
+      document.getElementById("themeButton");
+
+    themeButton.addEventListener("click", function () {
+
+      document.body.classList.toggle("light");
+
+      if (document.body.classList.contains("light")) {
+
+        themeButton.textContent = "☾";
+
+        localStorage.setItem(
+          "portfolio-theme",
+          "light"
+        );
+
+      } else {
+
+        themeButton.textContent = "☀";
+
+        localStorage.setItem(
+          "portfolio-theme",
+          "dark"
+        );
+
+      }
+
+    });
+
+
+    /* Restore theme */
+
+    const savedTheme =
+      localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "light") {
+
+      document.body.classList.add("light");
+
+      themeButton.textContent = "☾";
+
+    }
+
+
+    /* Back to top */
+
+    const backTop =
+      document.getElementById("backTop");
+
+    window.addEventListener("scroll", function () {
+
+      if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+      } else {
+
+        backTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    backTop.addEventListener("click", function () {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* Reveal animation */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".card, .project, .certificate, .skill"
+      );
+
+    const observer =
+      new IntersectionObserver(
+        function (entries) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.style.opacity = "1";
+
+              entry.target.style.transform =
+                "translateY(0)";
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(function (element) {
+
+      element.style.opacity = "0";
+
+      element.style.transform =
+        "translateY(25px)";
+
+      element.style.transition =
+        "opacity .7s ease, transform .7s ease";
+
+      observer.observe(element);
+
+    });
+
+  </script>
+
+</body>
+</html>
